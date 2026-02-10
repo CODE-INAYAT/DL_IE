@@ -1,0 +1,276 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-50: #eef2ff;
+  --color-brand-100: #e0e7ff;
+  --color-brand-200: #c7d2fe;
+  --color-brand-300: #a5b4fc;
+  --color-brand-400: #818cf8;
+  --color-brand-500: #6366f1;
+  --color-brand-600: #4f46e5;
+  --color-brand-700: #4338ca;
+  --color-brand-800: #3730a3;
+  --color-brand-900: #312e81;
+
+  --color-cyan-400: #22d3ee;
+  --color-cyan-500: #06b6d4;
+  --color-cyan-600: #0891b2;
+
+  --color-emerald-400: #34d399;
+  --color-emerald-500: #10b981;
+  --color-emerald-600: #059669;
+
+  --color-amber-400: #fbbf24;
+  --color-amber-500: #f59e0b;
+  --color-amber-600: #d97706;
+
+  --color-rose-400: #fb7185;
+  --color-rose-500: #f43f5e;
+  --color-rose-600: #e11d48;
+
+  --color-surface: #0f172a;
+  --color-surface-light: #1e293b;
+  --color-surface-lighter: #334155;
+}
+
+/* ─── Theme CSS Custom Properties ───────────────────────── */
+
+:root,
+[data-theme="dark"] {
+  --th-bg: #0f172a;
+  --th-bg-secondary: #1e293b;
+  --th-bg-tertiary: #334155;
+  --th-text-primary: #f1f5f9;
+  --th-text-secondary: #94a3b8;
+  --th-text-tertiary: #64748b;
+  --th-text-muted: #475569;
+  --th-border: rgba(255, 255, 255, 0.05);
+  --th-border-hover: rgba(255, 255, 255, 0.1);
+  --th-card-bg: rgba(255, 255, 255, 0.02);
+  --th-card-bg-hover: rgba(255, 255, 255, 0.05);
+  --th-card-header-bg: rgba(255, 255, 255, 0.03);
+  --th-glass-bg: rgba(255, 255, 255, 0.03);
+  --th-glass-bg-hover: rgba(255, 255, 255, 0.06);
+  --th-glow-brand: rgba(99, 102, 241, 0.1);
+  --th-glow-cyan: rgba(6, 182, 212, 0.1);
+  --th-svg-fill: #0f172a;
+  --th-shadow: rgba(0, 0, 0, 0.3);
+  --th-table-hover: rgba(255, 255, 255, 0.02);
+  --th-scrollbar-track: #0f172a;
+  --th-scrollbar-thumb: #334155;
+  --th-formula-bg: rgba(255, 255, 255, 0.03);
+}
+
+[data-theme="light"] {
+  --th-bg: #f8fafc;
+  --th-bg-secondary: #f1f5f9;
+  --th-bg-tertiary: #e2e8f0;
+  --th-text-primary: #0f172a;
+  --th-text-secondary: #475569;
+  --th-text-tertiary: #64748b;
+  --th-text-muted: #94a3b8;
+  --th-border: rgba(15, 23, 42, 0.08);
+  --th-border-hover: rgba(15, 23, 42, 0.15);
+  --th-card-bg: rgba(255, 255, 255, 0.7);
+  --th-card-bg-hover: rgba(255, 255, 255, 0.9);
+  --th-card-header-bg: rgba(255, 255, 255, 0.8);
+  --th-glass-bg: rgba(255, 255, 255, 0.6);
+  --th-glass-bg-hover: rgba(255, 255, 255, 0.85);
+  --th-glow-brand: rgba(99, 102, 241, 0.08);
+  --th-glow-cyan: rgba(6, 182, 212, 0.08);
+  --th-svg-fill: #ffffff;
+  --th-shadow: rgba(100, 116, 139, 0.1);
+  --th-table-hover: rgba(99, 102, 241, 0.03);
+  --th-scrollbar-track: #f8fafc;
+  --th-scrollbar-thumb: #cbd5e1;
+  --th-formula-bg: rgba(99, 102, 241, 0.04);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--th-bg);
+    color: var(--th-text-secondary);
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--th-scrollbar-track);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--th-scrollbar-thumb);
+    border-radius: 3px;
+  }
+}
+
+/* ─── Theme-aware utility classes ───────────────────────── */
+
+.th-bg { background-color: var(--th-bg); }
+.th-bg-secondary { background-color: var(--th-bg-secondary); }
+.th-text-primary { color: var(--th-text-primary); }
+.th-text-secondary { color: var(--th-text-secondary); }
+.th-text-tertiary { color: var(--th-text-tertiary); }
+.th-text-muted { color: var(--th-text-muted); }
+.th-border { border-color: var(--th-border); }
+.th-border-hover:hover { border-color: var(--th-border-hover); }
+
+.th-card {
+  background-color: var(--th-card-bg);
+  border-color: var(--th-border);
+  transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+.th-card:hover {
+  background-color: var(--th-card-bg-hover);
+  border-color: var(--th-border-hover);
+  box-shadow: 0 8px 30px var(--th-shadow);
+}
+
+.th-glass {
+  background-color: var(--th-glass-bg);
+  border-color: var(--th-border);
+  backdrop-filter: blur(12px);
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.th-glass:hover {
+  background-color: var(--th-glass-bg-hover);
+  border-color: var(--th-border-hover);
+}
+
+.th-table-row:hover {
+  background-color: var(--th-table-hover);
+}
+
+.th-formula {
+  background-color: var(--th-formula-bg);
+  border-color: var(--th-border);
+}
+
+/* Light mode specific overrides */
+[data-theme="light"] .th-card {
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04), 0 2px 6px rgba(0,0,0,0.02);
+}
+
+[data-theme="light"] .th-card:hover {
+  box-shadow: 0 12px 48px rgba(100,116,139,0.14);
+}
+
+[data-theme="light"] .th-glass {
+  box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+}
+
+/* ─── Scroll Reveal Animations ──────────────────────────── */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(60px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.reveal-fade {
+  opacity: 0;
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-fade.visible {
+  opacity: 1;
+}
+
+/* Stagger delay utilities */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }
+.delay-600 { transition-delay: 600ms; }
+.delay-700 { transition-delay: 700ms; }
+.delay-800 { transition-delay: 800ms; }
+
+/* Timeline line draw animation */
+.timeline-line {
+  transform-origin: top;
+  transform: scaleY(0);
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.timeline-line.visible {
+  transform: scaleY(1);
+}
+
+/* ─── Light mode gradient overrides ────────────────────── */
+[data-theme="light"] .hero-gradient-text {
+  background-image: linear-gradient(to right, #4f46e5, #0891b2, #059669);
+}
+
+/* Light-mode tinted color patches for brand/cyan/emerald/amber/rose
+   These keep accent colors readable in both themes */
+[data-theme="light"] .brand-accent { color: #4f46e5; }
+[data-theme="light"] .cyan-accent { color: #0891b2; }
+[data-theme="light"] .emerald-accent { color: #059669; }
+[data-theme="light"] .amber-accent { color: #d97706; }
+[data-theme="light"] .rose-accent { color: #e11d48; }
+
+/* Divider theme */
+.th-divider {
+  opacity: 0.3;
+}
+
+[data-theme="light"] .th-divider {
+  opacity: 0.4;
+}
